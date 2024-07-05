@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface CarRepository extends JpaRepository<CarEntity,Long> {
-    @Query("SELECT s FROM  CarEntity s WHERE s.name= ?1")
+    @Query("SELECT c FROM  CarEntity c WHERE c.name= ?1")
     Optional<CarEntity> findByName(String name);
 }
