@@ -16,11 +16,19 @@ public class CarService {
     public  List<CarEntity> getCars(){
         return carRepository.findAll();
     }
+
     public void addCar(CarEntity car){
         Optional<CarEntity> carbyname=carRepository.findByName(car.getName());
         if (carbyname.isPresent()){
             throw new IllegalStateException("Car already exists");
         }
         carRepository.save(car);
+    }
+    public void deleteCar(Long carId){
+        boolean exists = carRepository.existsById(carId);
+        if (!exists){
+            throw new IllegalStateException("Car does not exist with id "+carId);
+        }
+        carRepository.deleteById(carId);
     }
 }

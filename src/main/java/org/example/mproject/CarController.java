@@ -21,4 +21,8 @@ public class CarController {
     public void registerCar(@RequestBody CarEntity car){
         carService.addCar(car);
     }
+    @DeleteMapping(path = "{carId}")
+    public void deleteCar(@PathVariable("carId") Long id){
+        carService.deleteCar(id);
+    }
 }
